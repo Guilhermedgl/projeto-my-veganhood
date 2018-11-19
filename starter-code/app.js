@@ -68,7 +68,6 @@ passport.use(new FacebookStrategy({
     clientSecret: process.env.FACEBOOKSECRET,
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   }, function(accessToken, refreshToken, profile, done) {
-    console.log(profile)
     User.findOne({ facebookID: profile.id }, function (err, user) {
       if (err) {
         return done (err);
@@ -94,9 +93,26 @@ passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLEID,
   clientSecret: process.env.GOOGLESECRET,
   callbackURL: "/auth/google/callback"
-}, function (accessToken, refreshToken, profile, done) => {
-  user.
-})
+}, function(accessToken, refreshToken, profile, done) {
+  User.findOne({ googleID: profile.id }, function (err, user) {
+    if (err) {
+      return done (err);
+    }
+    if (!user) {
+      newUser = new User ({
+        name: profile.displayName,
+        googleID: profile.id
+      });
+      newUser.save(function(err){
+        if (err) console.log(err);
+        return done(err, user);
+      });
+    } else {
+      return done(err, user)
+    }
+  });
+}
+));
 
 const index = require('./routes/index');
 app.use('/', index);
