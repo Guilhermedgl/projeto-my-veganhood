@@ -1,10 +1,19 @@
 const express = require('express');
+
 const router  = express.Router();
 const passport = require("passport");
 
+const Restaurant = require('../models/restaurant');
+
 /* GET home page */
 router.get('/', (req, res, next) => {
-  res.render('index');
+  Restaurant.find({}, (error, restaurants) => {
+    if (error) {
+      next(error);
+    } else {
+      res.render('index', { restaurants });
+    }
+  });
 });
 
 // GET mainwith guest link

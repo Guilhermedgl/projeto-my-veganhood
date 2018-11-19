@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
-const Schema   = mongoose.Schema;
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
 
 const restSchema = new Schema({
   // userID: String,
@@ -9,9 +10,14 @@ const restSchema = new Schema({
   Email: String,
   enum: ['vegan', 'veggie'],
 }, {
-  timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+  },
 });
 
-const Restaurant = mongoose.model("Restaurant", restSchema);
+restSchema.index({ location: '2dsphere' });
+
+const Restaurant = mongoose.model('Restaurant', restSchema);
 
 module.exports = Restaurant;
