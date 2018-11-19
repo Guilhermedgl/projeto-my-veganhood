@@ -89,6 +89,15 @@ passport.use(new FacebookStrategy({
   }
 ));
 
+// Google social login
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLEID,
+  clientSecret: process.env.GOOGLESECRET,
+  callbackURL: "/auth/google/callback"
+}, function (accessToken, refreshToken, profile, done) => {
+  user.
+})
+
 const index = require('./routes/index');
 app.use('/', index);
 
