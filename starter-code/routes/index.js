@@ -18,16 +18,18 @@ router.get('/', (req, res, next) => {
 
 // GET mainwith guest link
 router.get('/main', (req, res) => {
-  res.render('../views/home');
+  console.log(req.user)
+  res.render('home');
+  console.log(req.user)
 });
 
 router.get('/privacy', (req, res) => {
-  res.render('../views/privacy');
+  res.render('privacy');
 });
 
 //route to add restaurants
 router.get('/rest-add', (req, res) => {
-  res.render('../views/rest-add.hbs');
+  res.render('rest-add');
 });
 
 //route social login with Facebook
@@ -39,6 +41,18 @@ router.get('/auth/facebook/callback',
   function(req, res) {
     res.redirect('/main');
   });
+
+  //route social login with google
+  router.get("/auth/google", passport.authenticate("google", {
+    scope: ["https://www.googleapis.com/auth/plus.login",
+            "https://www.googleapis.com/auth/plus.profile.emails.read"]
+  }));
+  
+  router.get("/auth/google/callback", passport.authenticate("google", {
+    failureRedirect: "/",
+    successRedirect: "/main"
+  }));
+
 
 
 module.exports = router;
