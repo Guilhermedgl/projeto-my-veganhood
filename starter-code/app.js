@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static('views'));
 app.use(passport.initialize());
-app.use(passport.session());
+
 
 // Express View engine setup
 
@@ -54,6 +54,14 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 // default value for title local
 app.locals.title = 'Project: My VeganHood';
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
 
 
 //Facebook social login
