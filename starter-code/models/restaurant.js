@@ -8,7 +8,7 @@ const restSchema = new Schema({
   Endereço: String,
   Telefone: String,
   Email: String,
-  Tipo: { Tipo: String, enum: ['veg', 'veggie'] },
+  enum: ['vegan', 'veggie'],
 }, {
   timestamps: {
     createdAt: 'created_at',

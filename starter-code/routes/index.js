@@ -16,25 +16,29 @@ router.get('/', (req, res, next) => {
   });
 });
 
-// GET mainpage with guest link
-router.get('/mainpage', (req, res) => {
-  res.render('../views/mainpage.hbs');
+// GET mainwith guest link
+router.get('/main', (req, res) => {
+  res.render('../views/home');
 });
 
-//router to add restaurants
+router.get('/privacy', (req, res) => {
+  res.render('../views/privacy');
+});
+
+//route to add restaurants
 router.get('/rest-add', (req, res) => {
   res.render('../views/rest-add.hbs');
 });
 
-//route social login with Google
-router.get("/auth/google", passport.authenticate("google", {
-  scope: ["https://www.googleapis.com/auth/plus.login",
-          "https://www.googleapis.com/auth/plus.profile.emails.read"]
-}));
+//route social login with Facebook
+router.get('/auth/facebook',
+  passport.authenticate('facebook'));
 
-router.get("/auth/google/callback", passport.authenticate("google", {
-  failureRedirect: "/",
-  successRedirect: "../views/mainpage.hbs"
-}));
+router.get('/auth/facebook/callback', 
+  passport.authenticate('facebook', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/main');
+  });
+
 
 module.exports = router;
