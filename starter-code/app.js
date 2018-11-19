@@ -8,10 +8,12 @@ const hbs = require('hbs');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-const passport = require("passport");
-const User = require('./models/user');
-const FacebookStrategy = require('passport-facebook').Strategy;
+//const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+//const passport = require("passport");
+//const User = require('./models/user');
+//const FacebookStrategy = require('passport-facebook').Strategy;
+const session    = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 
 mongoose.connect('mongodb://localhost/veganhood', {
     useNewUrlParser: true
@@ -25,7 +27,6 @@ mongoose.connect('mongodb://localhost/veganhood', {
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
-
 const app = express();
 
 // Middleware Setup
@@ -36,8 +37,15 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static('views'));
-app.use(passport.initialize());
-
+app.use(session({
+  secret: process.env.COOKIESECRET,
+  cookie: { maxAge: 600000 },
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 24 * 60 * 60 // 1 day
+  })
+}));
+require('./passport')(app);
 
 // Express View engine setup
 app.use(require('node-sass-middleware')({
@@ -52,67 +60,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 // default value for title local
-app.locals.title = 'Project: My VeganHood';
-
-passport.serializeUser(function(user, cb) {
-  cb(null, user);
-});
-
-passport.deserializeUser(function(obj, cb) {
-  cb(null, obj);
-});
-
-//Facebook social login
-passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOKID,
-    clientSecret: process.env.FACEBOOKSECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
-  }, function(accessToken, refreshToken, profile, done) {
-    User.findOne({ facebookID: profile.id }, function (err, user) {
-      if (err) {
-        return done (err);
-      }
-      if (!user) {
-        newUser = new User ({
-          name: profile.displayName,
-          facebookID: profile.id
-        });
-        newUser.save(function(err){
-          if (err) console.log(err);
-          return done(err, user);
-        });
-      } else {
-        return done(err, user)
-      }
-    });
-  }
-));
-
-// Google social login
-passport.use(new GoogleStrategy({
-  clientID: process.env.GOOGLEID,
-  clientSecret: process.env.GOOGLESECRET,
-  callbackURL: "/auth/google/callback"
-}, function(accessToken, refreshToken, profile, done) {
-  User.findOne({ googleID: profile.id }, function (err, user) {
-    if (err) {
-      return done (err);
-    }
-    if (!user) {
-      newUser = new User ({
-        name: profile.displayName,
-        googleID: profile.id
-      });
-      newUser.save(function(err){
-        if (err) console.log(err);
-        return done(err, user);
-      });
-    } else {
-      return done(err, user)
-    }
-  });
-}
-));
+app.locals.title = 'Project: My Veganhood';
 
 const index = require('./routes/index');
 app.use('/', index);
