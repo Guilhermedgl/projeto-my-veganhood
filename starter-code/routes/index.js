@@ -18,7 +18,7 @@ router.get('/', (req, res, next) => {
 
 // GET mainwith guest link
 router.get('/main', (req, res) => {
-  console.log(req.user)
+  console.log(req.newUser)
   res.render('home');
   console.log(req.user)
 });
