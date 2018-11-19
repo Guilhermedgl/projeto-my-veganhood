@@ -13,8 +13,7 @@ const passport = require("passport");
 const User = require('./models/user');
 const FacebookStrategy = require('passport-facebook').Strategy;
 
-mongoose
-  .connect('mongodb://localhost/veganhood', {
+mongoose.connect('mongodb://localhost/veganhood', {
     useNewUrlParser: true
   })
   .then(x => {
@@ -48,7 +47,6 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -61,18 +59,16 @@ app.locals.title = 'Project: My VeganHood';
 //Facebook social login
 
 passport.use(new FacebookStrategy({
-    clientID: "536255960182905",
-    clientSecret: "e2017c59471147bdf6e6fb4821325fc0",
+    clientID: process.env.FACEBOOKID,
+    clientSecret: process.env.FACEBOOKSECRET,
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   }, function(accessToken, refreshToken, profile, done) {
     console.log(profile)
     User.findOne({ facebookID: profile.id }, function (err, user) {
       if (err) {
-        console.log('primeiro if')
         return done (err);
       }
       if (!user) {
-        console.log('segundo if')
         newUser = new User ({
           name: profile.displayName,
           facebookID: profile.id
@@ -82,7 +78,6 @@ passport.use(new FacebookStrategy({
           return done(err, user);
         });
       } else {
-        console.log('else')
         return done(err, user)
       }
     });
