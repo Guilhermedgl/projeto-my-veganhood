@@ -8,11 +8,7 @@ const hbs = require('hbs');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
-//const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-//const passport = require("passport");
-//const User = require('./models/user');
-//const FacebookStrategy = require('passport-facebook').Strategy;
-const session    = require("express-session");
+const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 mongoose.connect('mongodb://localhost/veganhood', {

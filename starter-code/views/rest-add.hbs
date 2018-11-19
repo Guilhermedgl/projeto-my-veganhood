@@ -1,34 +1,34 @@
-<form action="" method="POST" id="add-rest">
-
-    <div>
-        <label for="rest-name">Name:</label>
-        <input type="string" name="rest-name" id="rest-name" placeholder="ex: My Veganhood">
+<form id="form">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
     </div>
-
-    <div>
-        <label for="rest-address">Address: </label>
-        <input type="string" name="rest-address" id="rest-address" placeholder="ex: Av. Paulista, 1105">
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
     </div>
-
-    <div>
-        <label for="rest-email">E-mail: </label>
-        <input type="string" name="rest-email" id="rest-email" placeholder="ex: myveganhood@hotmail.com ">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
     </div>
-
-    <div>
-      <label for="rest-tel">Tel:</label>
-      <input type="string" name="rest-tel" id="rest-tel" placeholder=" ex: 55 11-12345-1234">
-    </div>
-
-    <div>
-      <label for="rest-type">Type: </label>
-      <select name="rest-type" id="rest-type">
-      <option value="vegan">Vegan</option>
-      <option value="veggie">Veggie</option>
-      <option value="both">Both</option>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
       </select>
     </div>
-
-    <button>Submit</button>
-
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
 </form>

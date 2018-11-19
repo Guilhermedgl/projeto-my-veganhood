@@ -4,13 +4,20 @@
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00B7FF; }
+  color: #15ff00; }
 
 #map {
   width: 100%;
   height: calc(100vh - 40px); }
 
 nav {
-  height: 40px; }
+  height: 40px;
+  border-bottom: 1px solid #d8d5d5; }
+
+nav p {
+  margin: 0 20px; }
+
+#form {
+  margin: 20px; }
 
 /*# sourceMappingURL=style.css.map */
