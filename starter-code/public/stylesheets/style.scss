@@ -1,5 +1,6 @@
-body {
-  padding: 50px;
+* {
+  padding: 0;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -9,6 +10,11 @@ a {
 
 #map {
   width: 100%;
-  height: 400px;
+  height: 93vh;
+}
+
+nav {
+  border: 1px solid black;
+  height: 40px;
 }
 

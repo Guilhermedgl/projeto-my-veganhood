@@ -40,7 +40,6 @@ app.use(passport.initialize());
 
 
 // Express View engine setup
-
 app.use(require('node-sass-middleware')({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
@@ -63,9 +62,7 @@ passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
 
-
 //Facebook social login
-
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOKID,
     clientSecret: process.env.FACEBOOKSECRET,
