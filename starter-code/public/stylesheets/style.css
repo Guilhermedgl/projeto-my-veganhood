@@ -12,7 +12,8 @@ a {
 
 nav {
   height: 40px;
-  border-bottom: 1px solid #d8d5d5; }
+  border-bottom: 1px solid #dad8d8;
+  background-color: #accf97; }
 
 nav p {
   margin: 0 20px; }
