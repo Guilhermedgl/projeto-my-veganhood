@@ -18,6 +18,8 @@ nav {
   border-bottom: 1px solid rgb(218, 216, 216);
   // background-color: rgb(172, 207, 151);
   background-color: #e3f2fd;
+  display: flex;
+  justify-content: space-between;
 }
 
 nav p {
@@ -33,5 +35,9 @@ nav p {
   border: 1px solid red;
   border-radius: 1em;
   padding: 10px 50px;
-  margin: 20px 100px
+  margin: 20px 100px;
+  display: flex;
+  flex-direction: column
+  
 }
+

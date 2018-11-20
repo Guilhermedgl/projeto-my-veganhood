@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 const restSchema = new Schema({
   // userID: String,
-  Nome: String,
-  Endereço: String,
-  Telefone: String,
+  Name: String,
+  Address: String,
+  Phone: String,
   Email: String,
   enum: ['vegan', 'veggie'],
 }, {
