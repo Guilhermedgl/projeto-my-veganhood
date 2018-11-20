@@ -1,10 +1,7 @@
 * {
   padding: 0;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
-
-a {
-  color: #15ff00; }
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 #map {
   width: 100%;
@@ -13,7 +10,7 @@ a {
 nav {
   height: 40px;
   border-bottom: 1px solid #dad8d8;
-  background-color: rgba(218, 216, 216, 0.7);
+  background-color: white;
   display: flex;
   justify-content: space-between; }
 
@@ -25,7 +22,7 @@ nav p {
 
 .restForm {
   width: 40%;
-  border: 1px solid red;
+  border: 1px solid #e7e7e7;
   border-radius: 1em;
   padding: 10px 50px;
   margin: 20px 100px;
@@ -33,20 +30,21 @@ nav p {
   flex-direction: column; }
 
 .indexPage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 200px;
-  border: 1px solid red;
-  background-color: rgba(218, 216, 216, 0.9); }
+  width: 600px;
+  height: 400px;
+  border: 1px solid #999999;
+  background-color: rgba(255, 255, 255, 0.8); }
 
-.indexBack {
-  background-size: 100%; }
+.indexPage h1 {
+  font-size: 4.1em; }
 
-body {
+.indexPage a {
+  font-size: 1.5em;
+  margin-top: 10px; }
+
+z.indexBack {
   background-image: url("../images/farmers-market.jpg");
   background-size: 100%;
-  display: flex;
-  flex-direction: column; }
+  height: calc(100vh - 40px); }
 
 /*# sourceMappingURL=style.css.map */
