@@ -32,7 +32,7 @@ window.onload = () => {
           origin: new google.maps.Point(0, 0), // origin
           anchor: new google.maps.Point(0, 32) // anchor
         };
-
+              
         const newMarker = new google.maps.Marker({
           position: {
             lat: user_location.lat,
@@ -51,4 +51,5 @@ window.onload = () => {
   }
 
   startMap();
+
 };
