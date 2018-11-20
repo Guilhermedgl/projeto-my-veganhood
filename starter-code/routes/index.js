@@ -3,18 +3,6 @@ const router = express.Router();
 const passport = require('passport');
 const Restaurant = require('../models/restaurant');
 
-/* GET home page */
-router.get('/', (req, res, next) => {
-  const user = req.user;
-  Restaurant.find({}, (error, restaurants) => {
-    if (error) {
-      next(error);
-    } else {
-      console.log('@@', user)
-      res.render('index', { restaurants, user });
-    }
-  });
-});
 
 // GET main with guest link
 router.get('/main', (req, res) => {
@@ -51,17 +39,27 @@ router.get('/auth/google/callback', passport.authenticate('google', {
   successRedirect: '/main',
 }));
 
-// route to add restaurants
-router.use((req, res, next) => {
-  console.log('in session', req.session)
+function isLogged(req) {
   if (req.session.currentUser) {
-    next();
+    return true;
+  }
+  return false;
+}
+
+router.get('/rest-add', (req, res) => {
+  if (isLogged(req)) {
+    res.render('rest-add');
   } else {
-    console.log("Please login")
-    res.redirect("/");
+    res.render("index", {err: "Please login with your Facebook or Google account." });
   }
 });
-router.get('/rest-add', (req, res) => {
-  res.render('rest-add');
+
+// main page
+router.get('/', (req, res, next) => {
+  if (isLogged(req)) {
+    res.redirect('/main');
+  } else {
+    res.render("index");
+  }  
 });
 module.exports = router;
