@@ -8,8 +8,9 @@ const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOKID,
     clientSecret: process.env.FACEBOOKSECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
-  }, function(accessToken, refreshToken, profile, done) {
+    callbackURL: "http://localhost:3000/auth/facebook/callback", 
+    passReqToCallback: true
+  }, function(req, accessToken, refreshToken, profile, done) {
     User.findOne({ facebookID: profile.id }, function (err, user) {
       if (err) {
         return done (err);
@@ -20,11 +21,12 @@ passport.use(new FacebookStrategy({
           facebookID: profile.id
         });
         newUser.save(function(err){
-          if (err) console.log(err);
           req.session.currentUser = user;
+          if (err) console.log(err);
           return done(err, user);
         });
       } else {
+        req.session.currentUser = user;
         return done(err, user)
       }
     });
@@ -35,8 +37,9 @@ passport.use(new FacebookStrategy({
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLEID,
   clientSecret: process.env.GOOGLESECRET,
-  callbackURL: "/auth/google/callback"
-}, function(accessToken, refreshToken, profile, done) {
+  callbackURL: "/auth/google/callback", 
+  passReqToCallback: true
+}, function(req, accessToken, refreshToken, profile, done) {
   User.findOne({ googleID: profile.id }, function (err, user) {
     if (err) {
       return done (err);
@@ -47,11 +50,12 @@ passport.use(new GoogleStrategy({
         googleID: profile.id
       });
       newUser.save(function(err){
-        if (err) console.log(err);
         req.session.currentUser = user;
+        if (err) console.log(err);
         return done(err, user);
       });
     } else {
+      req.session.currentUser = user;
       return done(err, user)
     }
   });

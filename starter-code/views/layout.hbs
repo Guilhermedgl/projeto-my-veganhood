@@ -12,13 +12,13 @@
 
 <body>
 
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-    <img src="../public/images/salad.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    My Veganhood
-    </a>
-  <p>My VeganHood</p>
-  <p><a href="/rest-add" class="">add a place</a></p>
+<nav class="d-flex align-items-center">
+  <p><a href="/">
+  <img src="/images/salad.png" width="30" height="30" alt="">
+  My veganhood</a></p>
+  <p><a href="/rest-add">add a place</a></p>
+  <p><a href="/logout">logout</a></p>
+  <p>{{{user.name}}}</p>
   </nav>
   
   {{{body}}}
@@ -28,3 +28,4 @@
 </html>
 
 {{!-- d-flex align-items-center justify-content-around --}}
+
