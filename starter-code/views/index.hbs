@@ -1,9 +1,30 @@
-<h1>{{title}}</h1>
-{{#if err}}
-{{err}}
-{{/if}}
-<ul>
-    <li><a href="/auth/facebook">Login with Facebook</a></li>
-    <li><a href="/auth/google">Login with Google</a></li>
-    <li><a href="/main">Login as a guest</a></li>
-</ul>
+<div class="indexBack">
+    {{#if err}}
+    {{err}}
+    {{/if}}
+    <ul>
+        <div class="indexPage">
+            <h1>Hello!</h1>
+            <li>
+                <a href="/auth/facebook">
+                <button type="button" class="btn btn-primary">
+                    Login with Facebook
+                </button>
+                </a>
+            </li>
+            <li>
+                <a href="/auth/google">
+                    <button type="button" class="btn btn-danger">
+                        Login with Google
+                    </button>
+                </a>
+            </li>
+            <li><a href="/main">Login as a guest</a></li>
+        </div>
+    </ul>
+</div>
+ 
+
+
+
+

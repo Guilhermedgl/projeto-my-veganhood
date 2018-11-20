@@ -13,7 +13,7 @@ a {
 nav {
   height: 40px;
   border-bottom: 1px solid #dad8d8;
-  background-color: #e3f2fd;
+  background-color: rgba(218, 216, 216, 0.7);
   display: flex;
   justify-content: space-between; }
 
@@ -29,6 +29,23 @@ nav p {
   border-radius: 1em;
   padding: 10px 50px;
   margin: 20px 100px;
+  display: flex;
+  flex-direction: column; }
+
+.indexPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  border: 1px solid red;
+  background-color: rgba(218, 216, 216, 0.9); }
+
+.indexBack {
+  background-size: 100%; }
+
+body {
+  background-image: url("../images/farmers-market.jpg");
+  background-size: 100%;
   display: flex;
   flex-direction: column; }
 
