@@ -1,34 +1,50 @@
-<form id="form">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+<div class="restForm">
+  <h1>Indique um Restaurante</h1>
+
+  <form id="form">
+
+    <div class="form-group row">
+      <input type="text" class="form-control" placeholder="Nome">
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+
+    <div class="form-group row">
+      <input type="text" class="form-control" id="inputAddress" placeholder="Endereço">
     </div>
-  </div>
-  <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
+
+    <div class="form-group row">
+      <input type="text" class="form-control" id="inputZip" placeholder="CEP">
     </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">State</label>
+
+    <div class="form-group row">
+      <input type="text" class="form-control" id="inputCity" placeholder="São Paulo - SP" disabled>
+    </div>
+
+    <div class="form-group row">
+      <input type="number" class="form-control" placeholder="Telefone">
+    </div>
+
+    <div class="form-group row">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+
+    <div class="form-group row">
       <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
+        <option selected>Tipo de Restaurante...</option>
+        <option>Vegan</option>
+        <option>Veggie</option>
+        <option>Ambos</option>
       </select>
     </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-  </div>
+
+  </form>
+
   <button type="submit" class="btn btn-primary">Add</button>
-</form>
+
+</div>
+
+<div>
+  
+</div>
+
+{{!-- required fields --}}
+

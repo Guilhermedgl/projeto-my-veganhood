@@ -12,12 +12,20 @@ a {
 
 nav {
   height: 40px;
-  border-bottom: 1px solid #dad8d8; }
+  border-bottom: 1px solid #dad8d8;
+  background-color: #e3f2fd; }
 
 nav p {
   margin: 0 20px; }
 
 #form {
   margin: 20px; }
+
+.restForm {
+  width: 40%;
+  border: 1px solid red;
+  border-radius: 1em;
+  padding: 10px 50px;
+  margin: 20px 100px; }
 
 /*# sourceMappingURL=style.css.map */
