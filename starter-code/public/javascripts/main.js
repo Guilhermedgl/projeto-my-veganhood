@@ -8,7 +8,7 @@ window.onload = () => {
     };
     // Initialize the map
     const map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
+      zoom: 17,
       center: initialCortinates
     });
     // Get geolocation from browser
@@ -20,11 +20,14 @@ window.onload = () => {
         };
 
         // Center map with user location
-        map.setCenter(user_location);
+        map.setCenter({
+          lat: (user_location.lat),
+          lng: (user_location.lng + 0.004)
+        })
 
         // Add a marker
         let iconMarker = {
-          url: '../images/broccoli.svg', // url
+          url: '../images/broccoli.svg', // brocolis url
           scaledSize: new google.maps.Size(40, 40), // size
           origin: new google.maps.Point(0, 0), // origin
           anchor: new google.maps.Point(0, 32) // anchor
