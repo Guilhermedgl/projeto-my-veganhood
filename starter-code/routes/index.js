@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const Restaurant = require('../models/restaurant');
+const Rest = require('../models/restaurant');
 
 
-// GET main with guest link
+// main with guest link
 router.get('/main', (req, res) => {
   const user = req.user;
   res.render('home', { user });
@@ -45,7 +45,7 @@ function isLogged(req) {
   }
   return false;
 }
-
+// authentication to add restaurants
 router.get('/rest-add', (req, res) => {
   if (isLogged(req)) {
     res.render('rest-add');
@@ -54,7 +54,7 @@ router.get('/rest-add', (req, res) => {
   }
 });
 
-// main page
+// main with logo link
 router.get('/', (req, res, next) => {
   if (isLogged(req)) {
     res.redirect('/main');
@@ -62,4 +62,33 @@ router.get('/', (req, res, next) => {
     res.render("index");
   }  
 });
+
+router.post('/rest-add', (req, res, done) => {
+  console.log("batman")
+  Rest.findOne({name: req.body.name}, function(err, rest) {
+    console.log(rest)
+    if (err) {
+      return done (err);
+    }
+    if (!rest) {
+      newRest = new Rest ({
+        Name: req.body.name,
+        Address: req.body.address,
+        Zip: req.body.zip,
+        City: 'São Paulo - SP',
+        Phone: req.body.phone,
+        Email: req.body.email,
+        Type: req.body.type
+      });
+      newRest.save(function(err){
+        if (err) console.log(err);
+        res.redirect("/rest-add")
+        return done(err, rest);
+      });
+    } else {
+      return done(err, rest)
+    }
+  });
+})
+
 module.exports = router;

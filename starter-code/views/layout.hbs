@@ -7,29 +7,28 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
 </head>
 
 <body>
 
-<nav class="d-flex align-items-center">
-  <p>
-    <a href="/">
-      <img src="/images/salad.png" width="30" height="30" alt="">
+  <nav class="d-flex align-items-center">
+    <div>
+    <p><a href="/"><img src="/images/salad.png" width="30" height="30" alt="">
         My Veganhood
-    </a>
-  </p>
-  <p><a href="/rest-add">Add a Place</a></p>
-  <p>{{{user.name}}}</p>
-  <p>
-    <a href="/logout">
-      <img src="/images/exit.png" width="30" height="30" alt="">
-    </a>
-  </p>
+      </a></p>
+    </div>
+    <div class="d-flex align-items-center">
+    <p><a href="/rest-add">Add a Place</a></p>
+    <p>{{{user.name}}}</p>
+    <p><a href="/logout"><img src="/images/exit.png" width="30" height="30" alt=""></a></p>
+    </div>
   </nav>
-  
-  {{{body}}}
 
+  <div id="body" class="d-flex align-items-center justify-content-center">
+    {{{body}}}
+  </div>
 </body>
 
 </html>

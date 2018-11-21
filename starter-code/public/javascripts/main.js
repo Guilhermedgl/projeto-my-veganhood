@@ -21,7 +21,7 @@ window.onload = () => {
 
         // Center map with user location
         map.setCenter({
-          lat: (user_location.lat),
+          lat: (user_location.lat - 0.001),
           lng: (user_location.lng + 0.004)
         })
 
@@ -30,9 +30,9 @@ window.onload = () => {
           url: '../images/broccoli.svg', // brocolis url
           scaledSize: new google.maps.Size(40, 40), // size
           origin: new google.maps.Point(0, 0), // origin
-          anchor: new google.maps.Point(0, 32) // anchor
+          anchor: new google.maps.Point(0, -32) // anchor
         };
-              
+
         const newMarker = new google.maps.Marker({
           position: {
             lat: user_location.lat,

@@ -3,12 +3,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const restSchema = new Schema({
-  // userID: String,
   Name: String,
   Address: String,
+  Zip: String,
+  City: String,
   Phone: String,
   Email: String,
-  enum: ['vegan', 'veggie'],
+  Type: {
+    type: String,
+    enum: ['Vegan', 'Veggie', 'Both']
+  },
 }, {
   timestamps: {
     createdAt: 'created_at',
