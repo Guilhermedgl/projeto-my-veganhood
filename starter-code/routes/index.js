@@ -77,7 +77,8 @@ router.post('/rest-add', (req, res, done) => {
         Zip: req.body.zip,
         City: 'São Paulo - SP',
         Phone: req.body.phone,
-        Email: req.body.email
+        Email: req.body.email,
+        Type: req.body.type
       });
       newRest.save(function(err){
         if (err) console.log(err);

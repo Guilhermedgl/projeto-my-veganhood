@@ -9,7 +9,10 @@ const restSchema = new Schema({
   City: String,
   Phone: String,
   Email: String,
-  enum: ['vegan', 'veggie'],
+  Type: {
+    type: String,
+    enum: ['Vegan', 'Veggie', 'Both']
+  },
 }, {
   timestamps: {
     createdAt: 'created_at',
