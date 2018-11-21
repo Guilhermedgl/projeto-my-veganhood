@@ -1,6 +1,13 @@
 
 <div id="map"></div>
-<div id="list" class="d-flex align-items-center justify-content-center"></div>
+<div id="list" class="d-flex align-items-center justify-content-center">
+    <h3>Restaurants</h3>
+        {{#each Rest}}
+        <p><a href="#">{{this.Rest.name}}</a></p>
+        {{else}}
+        <p>no content</p>
+        {{/each}}
+</div>
 
 <!--  Axios CDN  -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

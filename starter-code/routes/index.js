@@ -7,7 +7,7 @@ const Rest = require('../models/restaurant');
 // main with guest link
 router.get('/main', (req, res) => {
   const user = req.user;
-  res.render('home', { user });
+  res.render('home', { user, Rest });
 });
 
 // destroy session
