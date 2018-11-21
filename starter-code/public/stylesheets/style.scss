@@ -25,14 +25,14 @@ nav {
 
 #list {
   position: relative;
-  border: 1px solid rgb(231, 231, 231);
-  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgb(207, 207, 207);
+  background-color: rgb(245, 255, 242);
   border-radius: 1em;
   height: 80vh;
-  box-shadow: 3px 3px #cecece;
+  box-shadow: 4px 4px #cecece;
   width: 30%;
   display: flex;
-
+  overflow: auto;
 }
 
 nav p {

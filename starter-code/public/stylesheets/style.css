@@ -22,13 +22,14 @@ nav {
 
 #list {
   position: relative;
-  border: 1px solid #e7e7e7;
-  background-color: white;
+  border: 1px solid #cfcfcf;
+  background-color: #f5fff2;
   border-radius: 1em;
   height: 80vh;
-  box-shadow: 3px 3px #cecece;
+  box-shadow: 4px 4px #cecece;
   width: 30%;
-  display: flex; }
+  display: flex;
+  overflow: auto; }
 
 nav p {
   margin: 0 20px; }
