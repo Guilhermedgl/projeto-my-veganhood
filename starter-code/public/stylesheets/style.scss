@@ -67,8 +67,9 @@ nav p {
 .indexPage {
   width: 45%;
   height: 60vh;
-  border: 1px solid rgb(153, 153, 153);
+  // border: 1px solid rgb(153, 153, 153);
   background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.1em;
 }
 
 .indexPage h1 {
@@ -82,7 +83,7 @@ nav p {
 
 .indexBack {
   width: 100%;
-  background-image: url('../images/vegetables10.jpg');
+  background-image: url('../images/vegetables11.jpg');
   background-size: 100%;
   height: calc(100vh - 40px);
 }
