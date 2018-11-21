@@ -4,15 +4,30 @@
   font: 15px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 #map {
+  position: absolute;
   width: 100%;
-  height: calc(100vh - 40px); }
+  height: calc(100vh - 45px);
+  margin-top: 44px; }
 
 nav {
+  position: relative;
   height: 40px;
   border-bottom: 1px solid #dad8d8;
   background-color: white;
   display: flex;
   justify-content: space-between; }
+
+#list {
+  position: relative;
+  border: 1px solid #e7e7e7;
+  background-color: white;
+  border-radius: 1em;
+  height: 80vh;
+  box-shadow: 3px 3px #cecece;
+  width: 20%;
+  display: flex;
+  justify-self: end;
+  align-content: flex-end; }
 
 nav p {
   margin: 0 20px; }
@@ -36,7 +51,7 @@ nav p {
 
 .restForm {
   width: 95%;
-  padding: 10px 50px;
+  padding: 10px 40px;
   height: 70vh; }
 
 .indexPage {
