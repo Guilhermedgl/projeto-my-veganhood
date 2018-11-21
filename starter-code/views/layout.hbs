@@ -21,8 +21,10 @@
     </div>
     <div class="d-flex align-items-center">
     <p><a href="/rest-add">Add a Place</a></p>
+      {{#if user}}
     <p>{{{user.name}}}</p>
     <p><a href="/logout"><img src="/images/exit.png" width="30" height="30" alt=""></a></p>
+      {{/if}}
     </div>
   </nav>
   <div id="body-1">
