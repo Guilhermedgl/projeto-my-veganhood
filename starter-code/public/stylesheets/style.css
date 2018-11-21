@@ -44,7 +44,7 @@ nav p {
   background-size: 100%; }
 
 body {
-  background-image: url("../images/farmers-market.jpg");
+  background-image: url("../images/fruits.jpg");
   background-size: 100%;
   display: flex;
   flex-direction: column; }
