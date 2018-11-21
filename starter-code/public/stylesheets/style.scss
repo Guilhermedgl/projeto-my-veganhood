@@ -28,13 +28,22 @@ nav p {
   width: 100%;
 }
 
-.restForm {
-  width: 40%;
+#rest-add-form h1 {
+  font-size: 2.3em;
+}
+
+.form-container {
   border: 1px solid rgb(231, 231, 231);
-  border-radius: 1em;
-  padding: 10px 50px;
   background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 1em;
+  height: 80vh;
+  box-shadow: 3px 3px #cecece;
   margin-left: 20px;
+} 
+
+.restForm {
+  width: 95%;
+  padding: 10px 50px;
   height: 70vh;
 }
 
