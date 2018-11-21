@@ -5,11 +5,15 @@
 }
 
 #map {
+  position: absolute;
   width: 100%;
-  height: calc(100vh - 40px);
+  height: calc(100vh - 45px);
+  margin-top: 44px;
+
 }
 
 nav {
+  position: relative;
   height: 40px;
   border-bottom: 1px solid rgb(218, 216, 216);
   background-color: rgb(255, 255, 255);
@@ -17,6 +21,18 @@ nav {
   justify-content: space-between;
 }
 
+#list {
+  position: relative;
+  border: 1px solid rgb(231, 231, 231);
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 1em;
+  height: 80vh;
+  box-shadow: 3px 3px #cecece;
+  width: 20%;
+  display: flex;
+  justify-self: end;
+  align-content: flex-end;
+}
 nav p {
   margin: 0 20px;
 }
@@ -28,13 +44,23 @@ nav p {
   width: 100%;
 }
 
-.restForm {
-  width: 40%;
+#rest-add-form h1 {
+  font-size: 2.3em;
+}
+
+.form-container {
   border: 1px solid rgb(231, 231, 231);
-  border-radius: 1em;
-  padding: 10px 50px;
   background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 1em;
+  height: 80vh;
+  box-shadow: 3px 3px #cecece;
   margin-left: 20px;
+} 
+
+
+.restForm {
+  width: 95%;
+  padding: 10px 40px;
   height: 70vh;
 }
 
