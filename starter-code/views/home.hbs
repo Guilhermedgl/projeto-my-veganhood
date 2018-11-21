@@ -1,10 +1,13 @@
 
 <div id="map"></div>
-<div id="list" class="d-flex align-items-center justify-content-center">
-    <div>
-        <h3>Restaurants</h3>
+<div id="list" class="d-flex justify-content-center">
+    <div id="list-rest">
+        <h2>Restaurants</h2>
         {{#each Rest}}
-            <p><a href="">{{this.Name}}</a></p>
+            <h3><a href="">{{this.Name}}</a></h3>
+            <p>{{this.Address}}</p>
+            <p>{{this.Phone}}</p>
+            <hr>
             {{else}}
             <p>no content</p>
         {{/each}}

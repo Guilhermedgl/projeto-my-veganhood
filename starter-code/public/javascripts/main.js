@@ -1,3 +1,6 @@
+const directionsService = new google.maps.DirectionsService;
+const directionsDisplay = new google.maps.DirectionsRenderer;
+
 window.onload = () => {
   function startMap() {
 
@@ -30,7 +33,7 @@ window.onload = () => {
           url: '../images/broccoli.svg', // brocolis url
           scaledSize: new google.maps.Size(40, 40), // size
           origin: new google.maps.Point(0, 0), // origin
-          anchor: new google.maps.Point(0, -32) // anchor
+          anchor: new google.maps.Point(0, 0) // anchor
         };
 
         const newMarker = new google.maps.Marker({
@@ -41,6 +44,28 @@ window.onload = () => {
           map: map,
           icon: iconMarker
         });
+
+        const directionRequest = {
+          origin: { lat: user_location.lat, lng: user_location.lng},
+          destination: 'Rio de Janeiro, BR',
+          travelMode: 'DRIVING'
+        };
+        
+        directionsService.route(
+          directionRequest,
+          function(response, status) {
+            if (status === 'OK') {
+              // everything is ok
+              directionsDisplay.setDirections(response);
+        
+            } else {
+              // something went wrong
+              window.alert('Directions request failed due to ' + status);
+            }
+          }
+        );
+        
+        directionsDisplay.setMap(map);
 
       }, function () {
         console.log('Error in the geolocation service.');
