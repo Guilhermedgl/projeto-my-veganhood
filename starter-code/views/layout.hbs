@@ -14,24 +14,33 @@
 <body>
 
   <nav class="d-flex align-items-center">
-    <div>
-    <p><a href="/"><img src="/images/logo.png" width="70" height="30" alt="">
+
+    <div id="logo">
+      <p><a href="/"><img src="/images/logo.png" width="70" height="30" alt="">
         My Veganhood
       </a></p>
     </div>
-    <div class="d-flex align-items-center">
-    <p><a href="/rest-add">Add a Place</a></p>
+
+      <div>
+        <input type="text" class="input">
+      </div>
+
+    <div id="nav-end" class="d-flex align-items-center">
+      <p><a href="/rest-add">Add a Place</a></p>
       {{#if user}}
-    <p>{{{user.name}}}</p>
-    <p><a href="/logout"><img src="/images/exit.png" width="30" height="30" alt=""></a></p>
+        <p>{{{user.name}}}</p>
+        <p><a href="/logout"><img src="/images/exit.png" width="30" height="30" alt=""></a></p>
       {{/if}}
     </div>
+
   </nav>
+
   <div id="body-1">
   <div id="body" class="d-flex align-items-center justify-content-center">
     {{{body}}}
   </div>
   </div>
+
 </body>
 
 </html>

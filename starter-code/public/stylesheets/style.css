@@ -20,13 +20,13 @@ nav {
   display: flex;
   justify-content: space-between; }
 
-#list {
+z#list {
   position: relative;
   border: 1px solid #cfcfcf;
   background-color: #f5fff2;
   border-radius: 1em;
   height: 80vh;
-  box-shadow: 4px 4px #cecece;
+  box-shadow: 5px 5px #cecece;
   width: 30%;
   display: flex;
   overflow: auto; }
@@ -83,5 +83,11 @@ nav p {
 .btn-danger {
   width: 30vh;
   border-radius: 5px; }
+
+.input {
+  width: 600px;
+  height: 25px;
+  border-radius: 1em;
+  border: 1px solid #d8d8d8; }
 
 /*# sourceMappingURL=style.css.map */

@@ -4,7 +4,7 @@
     <div id="list-rest">
         <h2>Restaurants</h2>
         {{#each Rest}}
-            <h3><a href="">{{this.Name}}</a></h3>
+            <h3><a href="#" class="draw">{{this.Name}}</a></h3>
             <p>{{this.Address}}</p>
             <p>{{this.Phone}}</p>
             <hr>
@@ -18,9 +18,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <!--  Google Maps Key  -->
-<script 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrXapChUVvLn7V6fDDjP35SZsgMRc44Ok">
-</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFVo2GclpViRQsTIVr2JdLOhwL8Wg4ghU&libraries=places"></script>
 
 <!--  Connect main.js  -->
 <script type="text/javascript" src="/javascripts/main.js"></script> 
