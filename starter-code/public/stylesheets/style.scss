@@ -33,7 +33,7 @@ nav {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 1em;
   height: 80vh;
-  box-shadow: 4px 4px #cecece;
+  box-shadow: 5px 5px #cecece;
   width: 30%;
   overflow: auto;
   z-index: 5;
@@ -142,4 +142,9 @@ $font-family-sans-serif:
   // Emoji fonts
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 
-
+  .input {
+    width: 600px;
+    height: 25px;
+    border-radius: 1em;
+    border: 1px solid rgb(216, 216, 216);
+  }

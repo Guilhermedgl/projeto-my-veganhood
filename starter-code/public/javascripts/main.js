@@ -1,80 +1,60 @@
-const directionsService = new google.maps.DirectionsService;
-const directionsDisplay = new google.maps.DirectionsRenderer;
 
-window.onload = () => {
+  const arrRest = Array.from(document.getElementsByClassName('draw'));
+  console.log(arrRest)
+  arrRest.forEach(element => {
+    console.log(element)
+    element.addEventListener('click', function() {
+      console.log('Batman!');
+    }); 
+  });
+
+  let map;
+
   function startMap() {
 
-    // Initial coordinates
-    const initialCortinates = {
-      lat: -23.550305,
-      lng: -46.6363896
-    };
-    // Initialize the map
-    const map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 17,
-      center: initialCortinates
+    let center = new google.maps.LatLng(41.3977381, 2.190471916);
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: center,
+      zoom: 15
     });
-    // Get geolocation from browser
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        const user_location = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
 
-        // Center map with user location
-        map.setCenter({
-          lat: (user_location.lat - 0.001),
-          lng: (user_location.lng + 0.004)
-        })
-
-        // Add a marker
-        let iconMarker = {
-          url: '../images/broccoli.svg', // brocolis url
-          scaledSize: new google.maps.Size(40, 40), // size
-          origin: new google.maps.Point(0, 0), // origin
-          anchor: new google.maps.Point(0, 0) // anchor
-        };
-
-        const newMarker = new google.maps.Marker({
-          position: {
-            lat: user_location.lat,
-            lng: user_location.lng
-          },
-          map: map,
-          icon: iconMarker
-        });
-
-        const directionRequest = {
-          origin: { lat: user_location.lat, lng: user_location.lng},
-          destination: 'Rio de Janeiro, BR',
-          travelMode: 'DRIVING'
-        };
-        
-        directionsService.route(
-          directionRequest,
-          function(response, status) {
-            if (status === 'OK') {
-              // everything is ok
-              directionsDisplay.setDirections(response);
-        
-            } else {
-              // something went wrong
-              window.alert('Directions request failed due to ' + status);
-            }
+    
+    let request = {
+      location: center,
+      radius: 3000,
+      types: ['restaurants']
+    };
+    
+    let service = new google.maps.places.PlacesService(map);
+    
+    service.nearbySearch(request, callback);
+    
+      if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(position => {
+          const user_location = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
           }
-        );
-        
-        directionsDisplay.setMap(map);
+        })
+      };
+  
+      map.setCenter(user_location);
+  }
 
-      }, function () {
-        console.log('Error in the geolocation service.');
-      });
-    } else {
-      console.log('Browser does not support geolocation.');
+  function callback(results, status) {
+    if(status === google.maps.places.PlacesServiceStatus.OK) {
+      for(let i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+      }
     }
   }
 
-  startMap();
+  function createMarker(place) {
+    let placeLoc = place.geometry.location;
+    let marker = new google.maps.Marker({
+      map: map,
+      position: place.geometry.location
+    });
+  }
 
-};
+  google.maps.event.addDomListener(window, 'load', startMap())
