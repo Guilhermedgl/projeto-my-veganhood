@@ -11,21 +11,34 @@
   let map;
 
   function startMap() {
-    let center = new google.maps.LatLng(-23.5505, -46.6333);
+
+    let center = new google.maps.LatLng(41.3977381, 2.190471916);
     map = new google.maps.Map(document.getElementById('map'), {
       center: center,
-      zoom: 13
+      zoom: 15
     });
 
+    
     let request = {
       location: center,
       radius: 3000,
       types: ['restaurants']
     };
-
+    
     let service = new google.maps.places.PlacesService(map);
-
+    
     service.nearbySearch(request, callback);
+    
+      if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(position => {
+          const user_location = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
+        })
+      };
+  
+      map.setCenter(user_location);
   }
 
   function callback(results, status) {
