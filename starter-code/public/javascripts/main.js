@@ -49,9 +49,7 @@ function startMap() {
 
   //Create the marker converting the address to geocoder
   let geocoder = new google.maps.Geocoder();
-
   function geocodeAddress(geocoder, resultsMap, address) {
-    let address = address
     geocoder.geocode({
       'address': address
     }, function (results, status) {

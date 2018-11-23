@@ -22,7 +22,8 @@
   z-index: 5;
   top: 10%;
   right: 5%;
-  padding: 10px; }
+  padding: 10px;
+  overflow: auto; }
 
 #rest-add-form {
   height: calc(100vh - 40px);
