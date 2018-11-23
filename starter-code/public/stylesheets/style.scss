@@ -39,6 +39,7 @@ nav {
   z-index: 5;
   top: 10%;
   right:5%;
+  padding: 10px;
 }
 
 #rest-add-form {
@@ -119,12 +120,39 @@ nav {
 
 .card-text {
   font-size: 1.6em;
-
 }
 
-@media (max-width: 380px) {
+@media (max-width: 478px) {
+  .displaySmall {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 770px) {
   .card-text {
-    font-size: 1.0em;
+    font-size: 1.2em;
+  }
+  .card-title {
+    font-size: 1.8em;
+  }
+  .displaySmall {
+    display: block;
+  }
+  .displayBig {
+    display: none;
+  }
+  .btn-primary {
+    width: 100px;
+  }
+  .btn-danger {
+    width: 100px;
+  }
+}
+
+@media (min-width: 771px) and (max-width: 1500px) {
+  .displaySmall {
+    display: none !important;
   }
 }
 
