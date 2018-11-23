@@ -7,13 +7,13 @@ const Rest = require('../models/restaurant');
 // main with guest link
 router.get('/main', (req, res) => {
   const user = req.user;
-  Rest.find()
-  .then(Rest => {
-    res.render('home', { user, Rest });
-  })
-  .catch(err => {
-    console.log(err)
-  })
+    Rest.find()
+    .then(Rest => {
+      res.render('home', { user, Rest });
+    })
+    .catch(err => {
+      console.log(err)
+    })
 });
 
 // destroy session

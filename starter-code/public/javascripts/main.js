@@ -1,60 +1,69 @@
+function startMap() {
+  let marker = [];
+  //First coordinates
+  const saoPaulo = {
+    lat: -23.5505,
+    lng: -46.6333
+  };
 
-  const arrRest = Array.from(document.getElementsByClassName('draw'));
-  console.log(arrRest)
-  arrRest.forEach(element => {
-    console.log(element)
-    element.addEventListener('click', function() {
-      console.log('Batman!');
-    }); 
+  //Create map
+  const map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: saoPaulo
   });
 
-  let map;
-
-  function startMap() {
-
-    let center = new google.maps.LatLng(41.3977381, 2.190471916);
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: center,
-      zoom: 15
-    });
-
-    
-    let request = {
-      location: center,
-      radius: 3000,
-      types: ['restaurants']
-    };
-    
-    let service = new google.maps.places.PlacesService(map);
-    
-    service.nearbySearch(request, callback);
-    
-      if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(position => {
-          const user_location = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          }
-        })
+  //Geolocation
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const user_location = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
       };
-  
+
+      // Center map with user location
       map.setCenter(user_location);
+      // Add a marker for your user location
+      const marker = new google.maps.Marker({
+        position: {
+          lat: user_location.lat,
+          lng: user_location.lng
+        },
+        map: map,
+      });
+
+    }, function () {
+      console.log('Error in the geolocation service.');
+    });
+  } else {
+    console.log('Browser does not support geolocation.');
   }
 
-  function callback(results, status) {
-    if(status === google.maps.places.PlacesServiceStatus.OK) {
-      for(let i = 0; i < results.length; i++) {
-        createMarker(results[i]);
+  let arr = Array.from(document.getElementsByClassName('rest-name'))
+  arr.forEach(rest => {
+    rest.addEventListener('click', () => {
+      let address = rest.nextElementSibling.textContent
+      geocodeAddress(geocoder, map, address);
+    })
+  });
+
+  var geocoder = new google.maps.Geocoder();
+
+  function geocodeAddress(geocoder, resultsMap, address) {
+    var address = address
+    geocoder.geocode({
+      'address': address
+    }, function (results, status) {
+      if (status === 'OK') {
+        resultsMap.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
       }
-    }
-  }
-
-  function createMarker(place) {
-    let placeLoc = place.geometry.location;
-    let marker = new google.maps.Marker({
-      map: map,
-      position: place.geometry.location
     });
   }
+}
 
-  google.maps.event.addDomListener(window, 'load', startMap())
+startMap();
