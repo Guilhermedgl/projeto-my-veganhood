@@ -92,7 +92,6 @@
 
 @media (max-width: 770px) {
   .card-text {
-<<<<<<< HEAD
     font-size: 1.2em; }
   .card-title {
     font-size: 1.8em; }
@@ -108,9 +107,6 @@
 @media (min-width: 771px) and (max-width: 1500px) {
   .displaySmall {
     display: none !important; } }
-=======
-    font-size: 1.0em; } }
->>>>>>> 9a6c0b3a7bec0e90218a0948160cd8505ad3feef
 
 .input {
   width: 600px;
