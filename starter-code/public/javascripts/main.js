@@ -38,6 +38,7 @@ function startMap() {
     console.log('Browser does not support geolocation.');
   }
 
+  //Get textContent from clicked restaurant
   let arr = Array.from(document.getElementsByClassName('rest-name'))
   arr.forEach(rest => {
     rest.addEventListener('click', () => {
@@ -46,6 +47,7 @@ function startMap() {
     })
   });
 
+  //Create the marker converting the address to geocoder
   var geocoder = new google.maps.Geocoder();
 
   function geocodeAddress(geocoder, resultsMap, address) {
