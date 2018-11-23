@@ -1,25 +1,25 @@
-<div id="list" class="d-flex justify-content-center align-items-center">
-    <div id="list-rest">
-        <h2>Restaurants</h2>
+<div id="list" class="d-flex justify-content-center align-items-start">
+    <div>
+        <h2>That's your veganhood</h2>
         {{#each Rest}}
-            <h3><a href="#" class="draw">{{this.Name}}</a></h3>
-            <p>{{this.Address}}</p>
-            <p>{{this.Phone}}</p>
-            <hr>
-            {{else}}
-            <p>no content</p>
+        <button type="submit" class="rest-name btn btn-link">
+            <h4>{{this.Name}}</h4>
+        </button>
+        <p>{{this.Address}}</p>
+        <p>type: {{this.Type}}</p>
+        <hr>
         {{/each}}
     </div>
-</div>
-<div id="map">
 
 </div>
+<div id="map"></div>
 
 <!--  Axios CDN  -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <!--  Google Maps Key  -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFVo2GclpViRQsTIVr2JdLOhwL8Wg4ghU&libraries=places"></script>
+<script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBFVo2GclpViRQsTIVr2JdLOhwL8Wg4ghU&libraries=places'></script>
+
 
 <!--  Connect main.js  -->
-<script type="text/javascript" src="/javascripts/main.js"></script> 
+<script type="text/javascript" src="/javascripts/main.js"></script>

@@ -42,9 +42,11 @@ passport.use(new GoogleStrategy({
 }, function(req, accessToken, refreshToken, profile, done) {
   User.findOne({ googleID: profile.id }, function (err, user) {
     if (err) {
+      console.log(req.user, req.profile)
       return done (err);
     }
     if (!user) {
+      console.log(req.user)
       newUser = new User ({
         name: profile.displayName,
         googleID: profile.id
