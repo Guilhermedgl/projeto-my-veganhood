@@ -1,5 +1,5 @@
 function startMap() {
-  let marker = [];
+
   //First coordinates
   const saoPaulo = {
     lat: -23.5505,
@@ -48,23 +48,26 @@ function startMap() {
   });
 
   //Create the marker converting the address to geocoder
-  var geocoder = new google.maps.Geocoder();
+  let geocoder = new google.maps.Geocoder();
 
   function geocodeAddress(geocoder, resultsMap, address) {
-    var address = address
+    let address = address
     geocoder.geocode({
       'address': address
     }, function (results, status) {
+      console.log(results)
       if (status === 'OK') {
         resultsMap.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
+        let marker = new google.maps.Marker({
           map: resultsMap,
           position: results[0].geometry.location
         });
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
+
     });
+    
   }
 }
 
